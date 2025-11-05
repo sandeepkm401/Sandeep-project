@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block title %}Finder Result-TheGoodFind{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top: 2rem; background-color: rgb(91, 237, 230); padding-left: 10%; padding-right: 10%; padding-bottom: 2%; color: white;">  
+    <h2>Item posted Successfully</h2>
+    <p><b>Name:</b> {{ name }}</p>
+    <p><b>Description:</b> {{ description }}</p>
+    <p><b>Location:</b> {{ location }}</p>
+    <p><b>Date & Time Found:</b> {{ found_date|date:"d M Y, g:i A" }}</p>
+
+    
+    {% if image_url %}
+        <p><b>Image:</b></p>
+        <img src="{{ image_url }}" class="img-fluid" alt="Uploaded image" style="max-width:600px;">
+    {% endif %}
+    <div class="row" style="margin-top: 1rem">
+        <div class="col-6" style="margin: 0 auto;">
+            <a href="javascript:history.back()" class="btn btn-outline-primary" style="margin: 1rem auto 0 auto; display: block;">Report another item</a>
+       <!-- <div class="col-6">
+            <a href="/home" class="btn btn-outline-danger" style="margin: 1rem auto 0 auto; display: block;">Go back to Home</a>
+        </div> -->
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block title %}TheGoodFind{% endblock %}
+
+{% block content %}
+<form action="{% url 'signup' %}" method="POST">
+    {% csrf_token %}
+    <div class="container fluid">
+        <div class="row">
+            <div class="col-md-4" style="margin: 5rem auto 0 auto; background-color: rgb(91, 237, 230);">
+                <p><br /></p>
+                <h1 align="center"><font size="6">Signup to TheGoodFind</font></h1>
+                <label for="Username" style="margin-top: 1rem;">Username</label>
+                <input id="Username" name="Username" type="text" class="form-control" placeholder="Enter your username" style="margin-top: 1rem;" required>
+                <label for="Email" style="margin-top: 1rem;">Email</label>
+                <input id="Email" name="Email" type="email" class="form-control" placeholder="Enter your email" style="margin-top: 1rem;" required>
+                <label for="Password" style="margin-top: 1rem;">New Password</label>
+                <input id="n_Password" name="n_Password" type="password" class="form-control" placeholder="Enter a password" style="margin-top: 1rem;" required>
+                <label for="Password" style="margin-top: 1rem;">Confirm Password</label>
+                <input id="c_Password" name="c_Password" type="password" class="form-control" placeholder="Confirm your password" style="margin-top: 1rem;" required>
+                <button type="submit" class="btn btn-outline-primary" style="margin: 1rem auto 0 auto; display: block;">Signup</button>
+                <p style="margin-top: 1rem;" align="center">Already have an account? Login here</p>
+                <div align="center">
+                    <a href="/login" class="btn btn-outline-primary" style="margin-top: 1rem;">Login</a>
+                </div>
+                <p><br /></p>
+            </div>            
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}

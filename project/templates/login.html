@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block title %}TheGoodFind{% endblock %}
+
+{% block content %}
+<form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    <div class="container fluid">
+        <div class="row">
+            <div class="col-md-4" style="margin: 8rem auto 0 auto; background-color: rgb(91, 237, 230);">
+                <p><br /></p>
+                <h1 style="text-align: center;"><font size="6">Login to TheGoodFind</font></h1>
+                <label for="Email" style="margin-top: 1rem;">Email</label>
+                <input type="email" id="Email" name="Email" class="form-control" placeholder="Enter your registered email" style="margin-top: 1rem;" required>
+                <label for="Password" style="margin-top: 1rem;">Password</label>
+                <input type="password" id="Password" name="Password" class="form-control" placeholder="Enter your password" style="margin-top: 1rem;" required>
+                <button type="submit" class="btn btn-outline-primary" style="margin: 1rem auto 0 auto; display: block;">Login</button>
+                <p style="margin-top: 1rem;" align="center">Don't have an account? Signup here</p>
+                <div align="center">
+                    <a href="/signup" class="btn btn-outline-primary" style="margin-top: 1rem;">Signup</a>
+                </div>
+                <p><br /></p>
+            </div>            
+        </div>
+    </div>
+</form>
+
+
+
+{% endblock %}

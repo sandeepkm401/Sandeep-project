@@ -1,0 +1,74 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}TheGoodFind{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">TheGoodFind</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dashboard
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item disabled" aria-current="page" href="{% url 'home' %}">Home</a></li>
+            <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+            <li><a class="dropdown-item" href="#">History</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?')">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<font color="white" face="Default">
+<div class="container fluid" style="margin: 5rem auto 0 auto; background-color: rgb(91, 237, 230);" align="center">
+  <h1>Welcome to TheGoodFind, {{ request.user.username }}!</h1><hr width="75%" />
+  <h3>What are you looking for today?</h3>
+</div>
+
+<div class="container fluid" style="margin: 2rem auto 0 auto;" align="center">
+  <div class="row">
+    <div class="col-6" style="margin: 0 auto;">
+      <a class="btn btn-outline-success" href="{% url 'finder' %}" style="margin: 0 auto;">I've found something (Finder)</a>
+    </div>
+    <div class="col-6" style="margin: 0 auto;">
+      <a class="btn btn-outline-danger" href="{% url 'searcher' %}" style="margin: auto 0 auto;">I've lost something (Searcher)</a>
+    </div>
+  </div>
+</div>
+
+<div class="container fluid" style="margin: 2rem auto 0 auto; display: block; padding-top: 1%; background-color: rgb(91, 237, 230);" align="left">
+  <h3 style="margin: 1rem;">Recent activity</h3><hr />    
+  <div class="row" style="background-color: rgb(91, 237, 230);">
+    {% for item in recent_items %}
+      <div class="col-4" style="margin-bottom: 1rem;">
+        <a href="{% url 'finder_detail' item.pk %}">
+          {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.name }}" style="width:100%; height:auto; margin-top:1rem;">
+          {% endif %}
+          <p><b>{{ item.name }}</b> — {{ item.location }}</p>
+        </a>
+      </div>
+    {% empty %}
+      <p style="margin-left: 1rem;">No recent activity yet.</p>
+    {% endfor %}
+  </div>
+</div>
+</font>
+
+{% endblock %}
