@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-f^uldo_+uz*u@yv2z^!em)ilv#-mx&-(a_7sjksk6-y(*+$g=e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['thegoodfind.onrender.com', 'localhost']
 
 
 # Application definition
