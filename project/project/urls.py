@@ -25,7 +25,7 @@ from thegoodfind import views as tgf_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',home),
+    path('',views.home,name='home'),
     path('thegoodfind', views.thegoodfind, name='thegoodfind'),
     path('login', views.login, name='login'),
     path('signup', views.signup, name='signup'),
